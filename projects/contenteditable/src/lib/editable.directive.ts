@@ -13,15 +13,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  selector:
-    '[editable][formControlName],[editable][formControl],[editable][ngModel]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EditableDirective),
-      multi: true,
-    },
-  ],
+    selector: '[editable][formControlName],[editable][formControl],[editable][ngModel]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => EditableDirective),
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class EditableDirective implements ControlValueAccessor {
   @Input() propValueAccessor = 'textContent';
