@@ -1,6 +1,6 @@
 import 'zone.js/testing';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient, HttpParams, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { Params } from '@angular/router';
@@ -130,9 +130,9 @@ describe('HttpBackendService', () => {
     function resetMock() {
       TestBed.resetTestingModule();
       TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule, ApiMockModule.forRoot(MyApiMockService), RouterTestingModule],
-        providers: [MockHttpBackendService],
-      });
+    imports: [ApiMockModule.forRoot(MyApiMockService), RouterTestingModule],
+    providers: [MockHttpBackendService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
       service = TestBed.inject(MockHttpBackendService);
 
@@ -1304,12 +1304,10 @@ describe('HttpBackendService', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [
-          HttpClientTestingModule,
-          ApiMockModule.forRoot(ApiMockServiceTest, { delay: 0 }),
-          RouterTestingModule,
-        ],
-      });
+    imports: [ApiMockModule.forRoot(ApiMockServiceTest, { delay: 0 }),
+        RouterTestingModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
       httpClient = TestBed.inject(HttpClient);
       httpTestingController = TestBed.inject(HttpTestingController);
