@@ -17,7 +17,9 @@ import {
 export class FormControl<T = any, V extends object = ValidatorsModel> extends NativeFormControl {
   override readonly value: ExtractControlValue<T>;
   override readonly valueChanges: Observable<ExtractControlValue<T>>;
-  override readonly status: Status;
+   override get status(): Status {
+    return super.status as Status;
+  };
   override readonly statusChanges: Observable<Status>;
   override readonly errors: ValidationErrors<V> | null;
 
