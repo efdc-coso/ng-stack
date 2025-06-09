@@ -21,7 +21,7 @@ export class FormArray<
 > extends NativeFormArray {
   override readonly value: ExtractModelValue<Item>[];
   override readonly valueChanges: Observable<ExtractModelValue<Item>[]>;
-  override readonly status: Status;
+  // override readonly status: Status;
   override readonly statusChanges: Observable<Status>;
   override readonly errors: ValidationErrors<V> | null;
 
