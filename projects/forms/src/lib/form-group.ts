@@ -20,7 +20,9 @@ export class FormGroup<
 > extends NativeFormGroup {
   override readonly value: ExtractGroupValue<T>;
   override readonly valueChanges: Observable<ExtractGroupValue<T>>;
-  override readonly status: Status;
+   override get status(): Status {
+    return super.status as Status;
+  };
   override readonly statusChanges: Observable<Status>;
   override readonly errors: ValidationErrors<V> | null;
 

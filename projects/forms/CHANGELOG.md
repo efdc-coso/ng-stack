@@ -1,3 +1,6 @@
+5.0.0
+  Breaking Changes:
+  * Update Support to Angular 19
 4.0.2
   Fixes:
   * Fix documentation
