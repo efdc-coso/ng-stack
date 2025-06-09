@@ -12,18 +12,17 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-    selector: `
+  selector: `
   input[type=file][ngModel],
   input[type=file][formControl],
   input[type=file][formControlName]`,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => InputFileDirective),
-            multi: true,
-        },
-    ],
-    standalone: false
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputFileDirective),
+      multi: true,
+    },
+  ],
 })
 export class InputFileDirective implements ControlValueAccessor {
   private _multiple: boolean | string | undefined;

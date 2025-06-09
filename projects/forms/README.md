@@ -1,6 +1,6 @@
 # coso-ngstack-forms (fork from @ng-stack/forms)
 
-Support for Angular 19.0+
+Support for Angular 17.1+
 
 > provides wrapped Angular's Reactive Forms to write its more strongly typed.
 
